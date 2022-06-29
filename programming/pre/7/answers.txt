@@ -1,0 +1,24 @@
+The following answers are for exercise 2.
+=========================================
+
+1) Method banana takes in an integer array and returns the product of its elements.
+Argument a is the integer array of interest.
+Variable kiwi is where the product is stored (and is initialized at 1 as a result).
+Variable i is an iterator.
+
+2) Method grapefruit takes in an integer array and an integer argument and returns the first index that contains the integer, or -1 if it does not exist.
+Argument a is the integer array of interest.
+Argument grape is the value checked for.
+Variable i is an iterator.
+
+3) Method pineapple takes in an integer array and an integer argument and returns the count of the number of times the integer argument appears in the array.
+Argument a is the integer array of interest.
+Argument apple is the value checked for.
+Variable pear is the count of times apple appears in a.
+Variable pine is the placeholder element from the enhanced for loop iteration.
+
+=========================================
+The following answers are for exercise 4.
+=========================================
+
+As far as I understand, you may not use the enhanced for loop as such. The enhanced for loop gives you a copy by value of the element, and does not give us any reference addresses to return to the array.
