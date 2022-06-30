@@ -1,0 +1,7 @@
+// Apologies if the pseudocode style is too general.
+// lower 97-122 to upper 65-90
+
+get string
+for char in string:
+  if char in [97,122]:
+    char = char-32

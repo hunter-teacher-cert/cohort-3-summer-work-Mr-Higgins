@@ -1,0 +1,17 @@
+String sentence = getSentence()
+bool atSpace = false
+int index = 0
+// "sentence at index" refers to the character at that index...
+while not atSpace and index < sentence.length:
+  if sentence at index is ' ':
+    atSpace = true
+  index += 1
+
+atSpace = false
+
+while not atSpace and index < sentence.length:
+  if sentence at index is not ' ':
+    print sentence at index
+  else:
+    atSpace = true
+  index += 1
