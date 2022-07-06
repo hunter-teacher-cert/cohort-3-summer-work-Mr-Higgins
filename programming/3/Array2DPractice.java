@@ -171,11 +171,18 @@ public class Array2DPractice
   */
   public static void explodeAllChar(char[][] board, char c)
   {
+    /*
+    *  Set up the boolean 2D array to indicate where
+    *  explosions will occur.
+    */
     boolean[][] willExplode = new boolean[board.length][board[0].length];
     for(int i = 0; i < board.length; i++){
       Array.fill(willExplode[i], false);
     }
-    
+
+    /*
+    *  Mark indices for explosion.
+    */
     for(int i = 0; i < board.length; i++){
       for(int j = 0; j < board[i].length; j++){
         if(board[i][j] == c){
@@ -184,6 +191,9 @@ public class Array2DPractice
       }
     }
 
+    /*
+    *  Commit the explosions!
+    */
     for(int i = 0; i < board.length; i++){
       for(int j = 0; j < board[i].length; j++){
         if(willExplode[i][j]){
