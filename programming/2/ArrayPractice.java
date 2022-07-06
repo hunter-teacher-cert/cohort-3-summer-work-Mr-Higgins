@@ -226,6 +226,17 @@ public class ArrayPractice
   public static void flip( int[] data )
   {
     int temp;
+    /*
+    *  You might be wondering why i < data.length/2
+    *  Recall that integer division in Java is
+    *  truncated! Think about an even array vs an odd
+    *  array. In an odd-sized array, the middle value
+    *  does not change position!
+    *  So by using data.length/2, we omit ever
+    *  swapping or wasting time with the middle value.
+    *  Or, heaven forbid, accidentally swapping more
+    *  than once!
+    */
     for(int i = 0; i < data.length/2; i++){
       temp = data[i];
       data[i] = data[data.length-1-i];
