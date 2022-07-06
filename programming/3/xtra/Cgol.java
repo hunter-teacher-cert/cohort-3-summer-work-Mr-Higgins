@@ -137,7 +137,7 @@ public class Cgol
   }
 
   public static char[][] copyBoard(char[][] board){
-    char[][] copy;
+    char[][] copy = new char[board.length][board[0].length];
     for(int i = 0;i < board.length; i++){
       for(int j = 0; j < board[0].length; j++){
         copy[i][j] = board[i][j];
@@ -155,15 +155,19 @@ public class Cgol
     */
     char[][] test, lastGen;
     test = createNewBoard(25,25);
+    lastGen = copyBoard(test);
+    int i = 0;
     imbueLife(test,200);
     // setCell(test, 0, 0, 'X');
     // setCell(test, 0, 1, 'X');
     // setCell(test, 1, 0, 'X');
-    for(int i = 0; i < 5; i++){
+    while(!Arrays.deepEquals(lastGen,test)){
       System.out.println("Generation "+i);
       printBoard(test);
       in.nextLine();//it won't continue the program until the user presses the 'enter' key
+      lastGen = copyBoard(test);
       test = generateNextBoard(test);
+      i++;
     }
     /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     char[][] board;

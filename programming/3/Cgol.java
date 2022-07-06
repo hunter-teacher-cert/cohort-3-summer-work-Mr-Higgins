@@ -122,19 +122,20 @@ public class Cgol
     return nextBoard;
   }
 
-  // public static void imbueLife(char[][] board, int numCells){
-  //   int rInt, cInt;
-  //   Random r = new Random();
+  // This is used for non-boring random starts.
+  public static void imbueLife(char[][] board, int numCells){
+    int rInt, cInt;
+    Random r = new Random();
     
-  //   while(numCells > 0){
-  //     rInt = r.nextInt(board.length);
-  //     cInt = r.nextInt(board[0].length);
-  //     if(board[rInt][cInt] == ' '){
-  //       setCell(board, rInt, cInt, 'X');
-  //       numCells--;
-  //     }
-  //   }
-  // }
+    while(numCells > 0){
+      rInt = r.nextInt(board.length);
+      cInt = r.nextInt(board[0].length);
+      if(board[rInt][cInt] == ' '){
+        setCell(board, rInt, cInt, 'X');
+        numCells--;
+      }
+    }
+  }
   
   public static void main( String[] args )
   {
@@ -145,10 +146,7 @@ public class Cgol
     */
     char[][] test, lastGen;
     test = createNewBoard(25,25);
-    // imbueLife(test,200);
-    setCell(test, 0, 0, 'X');
-    setCell(test, 0, 1, 'X');
-    setCell(test, 1, 0, 'X');
+    imbueLife(test,200);
     for(int i = 0; i < 5; i++){
       System.out.println("Generation "+i);
       printBoard(test);
