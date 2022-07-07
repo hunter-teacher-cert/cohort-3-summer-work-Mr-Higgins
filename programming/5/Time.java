@@ -3,9 +3,9 @@ import java.util.*;
 
 
 /**
- * Time class by Team LucidThinkeren
- * First Last
- * collaborators: First Last, First Last
+ * Time class by Team 7
+ * Joshua Higgins
+ * collaborators: Christine Marra, Dave Ciolino-Volano, Greg Sciame
  */
 
 /**
@@ -41,10 +41,9 @@ public class Time {
 
     // Constructors
     public Time(){
-	this.hours = 0;
-	this.minutes = 0;
-	this.seconds = 0;
-	
+    	this.hours = 0;
+    	this.minutes = 0;
+    	this.seconds = 0;
     }
 
     /**
@@ -53,10 +52,11 @@ public class Time {
        Initialize this instance to represent hrs:mins:secs as the time.
        
      */
+    // Test without this.
     public Time(int hrs, int mins, int secs){
-
-	// your code here
-	
+  	  this.hours = hrs;
+      this.minutes = mins;
+      this.seconds = secs;
     }
     
     
@@ -66,7 +66,7 @@ public class Time {
        returns a string representation of the time
     */
     public String toString(){
-	return("This should be changed to return the time in a nice form");
+	    return("The time is: "+this.hours+":"+this.minutes+":"+this.seconds);
     }
 
 
@@ -78,9 +78,9 @@ public class Time {
        modifies this instance to represent the time hrs:mins:secs
     */
     public void set(int hrs, int mins, int secs){
-	// add the code to add the time represented by other
-	// to this instance.
-
+      this.hours = hrs;
+      this.minutes = mins;
+      this.seconds = secs;
     }
 
     
@@ -92,9 +92,9 @@ public class Time {
        the time other.
     */
     public void add(Time other){
-	// add the code to add the time represented by other
-	// to this instance.
-
+      this.hours += other.hours;
+      this.minutes += other.minutes;
+      this.seconds += other.seconds;
     }
 
 
@@ -106,9 +106,12 @@ public class Time {
        false otherwise.
     */
     public boolean equals(Time other){
-	// your code here)
-
-	return false; // change this
+      boolean isEqual = true;
+      if(this.hours != other.hours || this.minutes != other.minutes
+        || this.seconds != other.seconds){
+        isEqual = false;
+      }
+      return isEqual;
     }
 
     /**
@@ -122,9 +125,15 @@ public class Time {
        0 if the two instances represent the same time.
     */
     public int compareTo(Time other){
-	// your code here)
-
-	return 0; // change this
+      int thisTime = this.hours*3600+this.minutes*60+this.seconds;
+      int otherTime = other.hours*3600+other.minutes*60+other.seconds;
+      if(thisTime > otherTime){
+        return 1;
+      }else if(thisTime == otherTime){
+        return 0;
+      }else{
+        return -1;
+      }
     }
     
 
