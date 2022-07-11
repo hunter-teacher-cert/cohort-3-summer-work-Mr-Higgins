@@ -127,7 +127,7 @@ public class SuperArray
   {
     if(index < this.numberElements){
       // shift items down to remove the item at index
-      for(int i = index; i < this.data.length-1; i++){
+      for(int i = index; i < this.numberElements-1; i++){
         this.data[i] = this.data[i+1];
       }
       // subtract fom numElements;
