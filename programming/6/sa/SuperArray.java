@@ -79,11 +79,7 @@ public class SuperArray
   public boolean isEmpty()
   {
     //return whether this SuperArray instance is empty
-    if(numberElements == 0){
-      return true;
-    }else{
-      return false;
-    }
+    return numberElements == 0;
   }
 
 
@@ -102,7 +98,12 @@ public class SuperArray
   public String toString()
   {
     //return stringified version of this Object
-    /* YOUR SIMPLE+SMART CODE HERE */
+    String s = "[";
+    for(int i = 0; i < this.data.length-1; i++){
+      s += (this.data[i]+",");
+    }
+    s += (this.data[this.data.length-1]+"]");
+    return s;
   }//end toString()
 
 
@@ -124,40 +125,86 @@ public class SuperArray
 
   public void remove(int index)
   {
-    // shift items down to remove the item at index
-    /* YOUR SIMPLE+SMART CODE HERE */
-
-    // subtract fom numElements;
-    /* YOUR SIMPLE+SMART CODE HERE */
+    if(index < this.numberElements){
+      // shift items down to remove the item at index
+      for(int i = index; i < this.data.length-1; i++){
+        this.data[i] = this.data[i+1];
+      }
+      // subtract fom numElements;
+      this.numberElements--;
+    }else{
+      System.out.println("Index does not exist!");
+    }
   }
 
+  // forceAdd exists purely to satisfy the implementation what-if
+  // on "what if I ACTUALLY wanted this index???"
+  // I wanted to make this a part of add with a boolean default but
+  // we can't change arguments here!
+  public void forceAdd(int index, int value){
+    while(index >= this.data.length){
+      this.grow();
+    }
+    for(int i = this.data.length-1; i > index; i--){
+      this.data[i] = this.data[i-1];
+    }
+    this.data[index] = value;
+    if(index > numberElements){
+      numberElements = index;
+    }
+  }
 
   public void add(int index, int value)
   {
-    // see if there's enough room
-    /* YOUR SIMPLE+SMART CODE HERE */
-
-    // shift elements toward the end of the array
-    /* YOUR SIMPLE+SMART CODE HERE */
-
-    // insert new element
-    /* YOUR SIMPLE+SMART CODE HERE */
-
+    
+    int[] temp = new int[this.data.length+1];
+    if(index > numberElements){
+      System.out.println("Warning, index far exceeds in use array,"
+                        + " defaulting to next available index "
+                        + numberElements);
+      System.out.println("Please use forceAdd if you wanted to"
+                        + " force this index.");
+      index = numberElements;
+    }
+    // test to see if we need to grow, then grow
+    if(numberElements == this.data.length){
+      for(int i = 0; i < index; i++){
+        temp[i] = this.data[i];
+      }
+      // shift
+      for(int i = index; i < this.data.length; i++){
+      temp[i+1] = data[i]; 
+      }
+      // insert
+      temp[index] = value;
+      this.data = temp;
+    }else{
+      // No need for temp.
+      for(int i = this.data.length-1; i > index; i--){
+        this.data[i] = this.data[i-1];
+      }
+      this.data[index] = value;
+    }
+    
     // increment numElements
-    /* YOUR SIMPLE+SMART CODE HERE */
+    this.numberElements++;
   }
-
 
   private void grow()
   {
     // create a new array with extra space
     // Q: How did you decide how much to increase capacity by?
-    /* YOUR SIMPLE+SMART CODE HERE */
+    // A: Increase by 10 because I'd rather increase by a flat block
+    //    based on the default constructor size.
+    int[] temp = new int[this.data.length+10];
 
     // copy over all the elements from the old array to the new one
-    /* YOUR SIMPLE+SMART CODE HERE */
+    for(int i = 0; i < this.data.length; i++){
+      temp[i] = this.data[i];
+    }
 
     // point data to the new array
+    this.data = temp;
     // Q: How does this look when illustrated using encapsulation diagram?
     /* YOUR SIMPLE+SMART CODE HERE */
   }//end grow()
