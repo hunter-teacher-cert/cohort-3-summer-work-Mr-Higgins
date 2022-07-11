@@ -12,22 +12,21 @@ public class SuperArrayDriver
     System.out.println(sa);
     System.out.println("Testing isEmpty (should be true)");
     System.out.println(sa.isEmpty());
-    sa.add(12);
-    System.out.println(sa);
-    sa.add(13);
-    sa.remove(0);
-    System.out.println(sa);
-    sa.add(2);
-    sa.add(4);
-    sa.add(9);
-    sa.add(1,1);
-    System.out.println(sa);
-    sa.add(20,22);
-    System.out.println(sa);
-    sa.forceAdd(20,22);
-    System.out.println(sa);
-    System.out.println(sa.get(20));
-    /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    // sa.add(12);
+    // System.out.println(sa);
+    // sa.add(13);
+    // sa.remove(0);
+    // System.out.println(sa);
+    // sa.add(2);
+    // sa.add(4);
+    // sa.add(9);
+    // sa.add(1,1);
+    // System.out.println(sa);
+    // sa.add(20,22);
+    // System.out.println(sa);
+    // sa.forceAdd(20,22);
+    // System.out.println(sa);
+    // System.out.println(sa.get(20));
     // -----------------------------------------------------------
     // YOUR HOMEGROWN/HOUSEMADE/ROLL-YOUR-OWN TEST METHODS HERE...
     // -----------------------------------------------------------
@@ -52,7 +51,6 @@ public class SuperArrayDriver
     System.out.println(sa);
     sa.remove(15);
     System.out.println(sa);
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
   }//main
 
