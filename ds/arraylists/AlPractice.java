@@ -106,7 +106,7 @@ public class AlPractice{
   - The parameter ArrayLists should not be modified.
   */
   public static ArrayList<Integer> sumLists(ArrayList<Integer>ListA,ArrayList<Integer>ListB){
-    ArrayList<Integer> sumList;
+    ArrayList<Integer> sumList = new ArrayList<Integer>();
     for(int i = 0; i < ListA.size(); i++){
       sumList.add(ListA.get(i)+ListB.get(i));
     }
@@ -124,7 +124,7 @@ public class AlPractice{
   - The parameter ArrayLists should not be modified.
   */
   public static ArrayList<Integer> zipLists(ArrayList<Integer>ListA,ArrayList<Integer>ListB){
-    ArrayList<Integer> myList;
+    ArrayList<Integer> myList = new ArrayList<Integer>();
     for(int i = 0; i < ListA.size() && i < ListB.size(); i++){
       myList.add(ListA.get(i));
       myList.add(ListB.get(i));
@@ -146,10 +146,12 @@ public class AlPractice{
 
   public static void main(String[] args) {
 
-    ArrayList<Integer> al;
+    ArrayList<Integer> al, bl, cl;
 
     // Uncomment these to test buildRandomList
     al = buildRandomList(10,100);
+    bl = buildRandomList(10,100);
+    cl = buildRandomList(3,100);
     System.out.println(al);
     System.out.println(sumOfList(al));
 
@@ -167,7 +169,20 @@ public class AlPractice{
     System.out.println(al);
     removeValue(al,5);
     System.out.println(al);
-
+    
+    // Challenge testing
+    System.out.println("Testing challenge functions...");
+    System.out.println(al);
+    System.out.println("added to...");
+    System.out.println(bl);
+    System.out.println("sums to...");
+    System.out.println(sumLists(al,bl));
+    System.out.println("Zipping al and bl");
+    System.out.println(zipLists(al,bl));
+    System.out.println("Zipping al and cl");
+    System.out.println(zipLists(al,cl));
+    System.out.println("Zipping cl and bl");
+    System.out.println(zipLists(cl,bl));
   }
 
 }
