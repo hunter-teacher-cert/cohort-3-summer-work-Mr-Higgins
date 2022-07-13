@@ -106,7 +106,11 @@ public class AlPractice{
   - The parameter ArrayLists should not be modified.
   */
   public static ArrayList<Integer> sumLists(ArrayList<Integer>ListA,ArrayList<Integer>ListB){
-    return null;//placeholder to compile.
+    ArrayList<Integer> sumList;
+    for(int i = 0; i < ListA.size(); i++){
+      sumList.add(ListA.get(i)+ListB.get(i));
+    }
+    return sumList;
   }
 
   /** zipLists
@@ -120,7 +124,21 @@ public class AlPractice{
   - The parameter ArrayLists should not be modified.
   */
   public static ArrayList<Integer> zipLists(ArrayList<Integer>ListA,ArrayList<Integer>ListB){
-    return null;//placeholder to compile.
+    ArrayList<Integer> myList;
+    for(int i = 0; i < ListA.size() && i < ListB.size(); i++){
+      myList.add(ListA.get(i));
+      myList.add(ListB.get(i));
+    }
+    if(ListA.size() < ListB.size()){
+      for(int i = ListA.size(); i < ListB.size(); i++){
+        myList.add(ListB.get(i));
+      }
+    }else{
+      for(int i = ListB.size(); i < ListA.size(); i++){
+        myList.add(ListA.get(i));
+      }
+    }
+    return myList;
   }
 
 
