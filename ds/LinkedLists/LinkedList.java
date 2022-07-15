@@ -2,37 +2,30 @@ import java.io.*;
 import java.util.*;
 
 /**
-   For all attempted methods, make sensible decisions for error and
-   edge cases (such as indexing out of bounds).
-   
-   Basic
-   -----
-   add(string value)
-   get(int index);
-   indexOf(String value);
-   
-   
-   Intermediate (at least add, size + one of the other two)
-   ------------
-   add(int index,String value)
-   size()
-   toString()
-   toArray()
-   
-   Challenge
-   --------
-   remove(int index);
-   
+For all attempted methods, make sensible decisions for error and
+edge cases (such as indexing out of bounds).
+Basic
+-----
+add(string value)
+get(int index);
+toString()
+Intermediate (at least add, size + one of the other two)
+------------
+size()
+add(int index,String value)
+indexOf(String value);
+toArray()
+Challenge
+--------
+remove(int index);
 */
 
 public class LinkedList{
 
   private Node head;
 
-
   public LinkedList(){
     head = null;
-
   }
 
   /**
@@ -41,15 +34,54 @@ public class LinkedList{
   Adds a new node containing value to the front of the list.
   */
   public void add(String value){
-
+    Node newHead = new Node(value, this.head);
+    this.head = newHead;
+    System.out.println(head.getData());
   }
 
   /**
-  returns the number of elements in the lsit
+  Returns the String in the node at location index.
+  */
+  public String get(int index){
+    Node walker = this.head;
+    for(int i = 0; i < index && walker != null; i++){
+      walker = walker.getNext();
+    }
+    if(walker == null){
+      System.out.println("Index does not exist! "
+                         +"Returning blank string.");
+      return "";
+    }
+    return walker.getData();
+  }
+
+  /**
+  Return a string representation of the list
+  */
+  public String toString(){
+    String result = "";
+    Node walker = this.head;
+    while(walker != null){
+      result += walker.getData()+ " ";
+      walker = walker.getNext();
+    }
+    return result;
+  }
+
+  /**
+  returns the number of elements in the list
   */
   public int size(){
-    return 0;
+    int result = 0;
+    Node walker = this.head;
+    while(walker != null){
+      result++;
+      walker = walker.getNext();
+    }
+    return result;
   }
+
+
 
   /**
   Parameters:
@@ -63,24 +95,9 @@ public class LinkedList{
   "a"-> "z" -> "b" -> "c" -> "d"
   */
   public void add(int index, String value){
+
   }
 
-  /**
-  Returns the String in the node at location index.
-  */
-  public void get(int index){
-  }
-
-  /**
-  Remove the Node at location index from the list.
-  Ex:
-  Given the list:
-  "a"->"b"->"c"->"d"->"e"
-  remove(2) results in:
-  "a"->"b"->"d"->"e"
-  */
-  public void remove(int index){
-  }
 
   /**
   Returns the index (location) of the first node in the list
@@ -94,6 +111,7 @@ public class LinkedList{
     return 0;
   }
 
+
   /**
   This routine should create a new array that is the same
   size as the number of Nodes in the list.
@@ -104,12 +122,17 @@ public class LinkedList{
     return null;
   }
 
+
+
   /**
-  Return a string representation of the list
+  Remove the Node at location index from the list.
+  Ex:
+  
+  Given the list:
+  "a"->"b"->"c"->"d"->"e"
+  remove(2) results in:
+  "a"->"b"->"d"->"e"
   */
-  public String toString(){
-    return "";
+  public void remove(int index){
   }
-
-
 }
