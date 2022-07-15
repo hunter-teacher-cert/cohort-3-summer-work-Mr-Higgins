@@ -41,14 +41,4 @@ public class Node{
   public String toString(){
     return "" + data + "->";
   }
-
-  public static void main(String[] args){
-    Node n1 = new Node("5");
-    Node n2 = new Node("10");
-    n1.setNext(n2);
-    n2.setNext(new Node("15"));
-    n2 = new Node("20");
-
-    System.out.println(n1.getNext().data);
-  }
 }
