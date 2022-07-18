@@ -95,7 +95,19 @@ public class LinkedList{
   "a"-> "z" -> "b" -> "c" -> "d"
   */
   public void add(int index, String value){
-
+    Node walker = this.head;
+    Node myNode = new Node(value);
+    for(int i = 0; i < index-1 && walker.getNext() != null;
+        i++){
+      walker = walker.getNext();
+    }
+    if(index != 0){
+      myNode.setNext(walker.getNext());
+      walker.setNext(myNode);
+    }else{
+      myNode.setNext(walker);
+      this.head = myNode;
+    }
   }
 
 
@@ -108,7 +120,17 @@ public class LinkedList{
   indexOf("d") would return 3 since "d" is at location 3.
   */
   public int indexOf(String value){
-    return 0;
+    Node walker = head;
+    int index = -1;
+    boolean found = false;
+    for(int i = 0; walker != null && !found; i++){
+      if(walker.getData().equals(value)){
+        index = i;
+        found = true;
+      }
+      walker = walker.getNext();
+    }
+    return index;
   }
 
 

@@ -12,5 +12,22 @@ public class Driver{
     System.out.println(l.get(2));
     System.out.println(l.get(9001));
     System.out.println(l);
+    l.add(2,"wow");
+    System.out.println(l);
+    l.add(4,"choose chaos");
+    System.out.println(l);
+    l.add(2000,"nice");
+    System.out.println(l);
+    l.add(0,"neat");
+    System.out.println(l);
+    l.add(1, "bazinga");
+    System.out.println(l);
+    System.out.println("The size is: " + l.size());
+    System.out.println("Neat is at index " 
+                       + l.indexOf("neat"));
+    System.out.println("Wow is at index " 
+                       + l.indexOf("wow"));
+    System.out.println("Jeepers is at index "
+                       + l.indexOf("jeepers"));
   }
 }
