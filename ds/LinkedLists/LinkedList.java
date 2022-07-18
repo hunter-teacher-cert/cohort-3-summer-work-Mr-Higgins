@@ -36,7 +36,6 @@ public class LinkedList{
   public void add(String value){
     Node newHead = new Node(value, this.head);
     this.head = newHead;
-    System.out.println(head.getData());
   }
 
   /**
@@ -141,7 +140,13 @@ public class LinkedList{
   the array.
   */
   public String[] toArray(){
-    return null;
+    String[] myArray = new String[this.size()];
+    Node walker = this.head;
+    for(int i = 0; walker != null; i++){
+      myArray[i] = walker.getData();
+      walker = walker.getNext();
+    }
+    return myArray;
   }
 
 
@@ -156,5 +161,17 @@ public class LinkedList{
   "a"->"b"->"d"->"e"
   */
   public void remove(int index){
+    Node walker = this.head;
+    for(int i = 0; i < index-1 && walker.getNext() != null;
+       i++){
+      walker = walker.getNext();
+    }
+    if(index == 0){
+      this.head = walker.getNext();
+    }else if(walker.getNext() != null){
+      walker.setNext(walker.getNext().getNext());
+    }else{
+      System.out.println("Index requested for removal that does not exist!");
+    }
   }
 }
