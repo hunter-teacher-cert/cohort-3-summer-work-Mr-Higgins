@@ -125,7 +125,7 @@ public class LinkedList{
   indexOf("d") would return 3 since "d" is at location 3.
   */
   public int indexOf(String value){
-    Node walker = head;
+    Node walker = this.head;
     int index = -1;
     boolean found = false;
     for(int i = 0; walker != null && !found; i++){
@@ -138,7 +138,48 @@ public class LinkedList{
     return index;
   }
 
+  /**
+  Returns the indices of ALL nodes that contain the value.
+  */
+  public int[] indicesOf(String value){
+    Node walker = this.head;
+    int count = 0;
+    int index = 0;
+    while(walker != null){
+      if(walker.getData().equals(value)){
+        count++;
+      }
+      walker = walker.getNext();
+    }
+    int[] myIndices = new int[count];
+    walker = this.head;
+    count = 0;
+    while(walker != null){
+      if(walker.getData().equals(value)){
+        myIndices[count] = index;
+        count++;
+      }
+      index++;
+      walker = walker.getNext();
+    }
+    return myIndices;
+  }
 
+  /**
+  This routine reverses our current list, not with spatial
+  efficiency though, it will temporarily double the space
+  taken until garbage collection occurs.
+  */
+  public void reverse(){
+    Node walker = this.head;
+    LinkedList rList = new LinkedList();
+    while(walker != null){
+      rList.add(walker.getData());
+      walker = walker.getNext();
+    }
+    this.head = rList.head;
+  }
+  
   /**
   This routine should create a new array that is the same
   size as the number of Nodes in the list.
