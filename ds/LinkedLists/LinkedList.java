@@ -94,18 +94,24 @@ public class LinkedList{
   "a"-> "z" -> "b" -> "c" -> "d"
   */
   public void add(int index, String value){
-    Node walker = this.head;
-    Node myNode = new Node(value);
-    for(int i = 0; i < index-1 && walker.getNext() != null;
-        i++){
-      walker = walker.getNext();
-    }
     if(index != 0){
+      Node walker = this.head;
+      Node myNode = new Node(value);
+
+      if(this.size() < index){
+        System.out.println("Warning, requested index beyond"
+                          + " size, defaulting to end.");
+      }
+      // There is likely a way to walk through this with
+      for(int i = 0; i < index-1 && walker.getNext() != null;
+          i++){
+        walker = walker.getNext();
+      }
+      
       myNode.setNext(walker.getNext());
       walker.setNext(myNode);
     }else{
-      myNode.setNext(walker);
-      this.head = myNode;
+      this.add(value);
     }
   }
 
