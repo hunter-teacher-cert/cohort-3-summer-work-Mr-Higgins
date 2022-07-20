@@ -70,7 +70,9 @@ public class SortSearch{
     return this.data.get(index);
   }
     
-
+  public int getSize(){
+    return this.data.size();
+  }
 
   /*
   Return the index of the smallest data idem from index 
@@ -88,21 +90,19 @@ public class SortSearch{
   
   */
   public int findSmallestIndex(int start){
-    //first value initialized as the smallest
+    // first value initialized as the smallest
     int smallIndex = start;
 
-    //traverse through the ArrayList
-   for(int i = start; i < data.size(); i++){
+    // traverse through the ArrayList
+   for(int i = start; i < this.data.size(); i++){
 
-    //compare the values to see which is smallest
-    if( data.get(i) < data.get(smallIndex) ){
-      
-      //set smallIndex to the new value
+    // compare the values to see which is smallest
+    if(data.get(i) < this.data.get(smallIndex)){
+      // set smallIndex to the new value
       smallIndex = i;
     }
    }
-  
-    //return the smallest
+    // return the smallest
     return smallIndex;
   }
 
@@ -119,24 +119,12 @@ public class SortSearch{
     // from 0 to the end of the ArrayList.
     int smallest;
     
-    for (int i = 0; i < data.size(); i++){
-          
-      //get the index of the smallest value
-      //from i to the end of the array 
-      //if (data.get(i) < )
-
-          
-       
-       
-     }
-    
-    //swap it with that index.
-
-    
+    for(int i = 0; i < this.data.size(); i++){
+      Collections.swap(this.data,i,findSmallestIndex(i)); 
+    }
   }
 
-
-
+  
   /* Search project starts here */
     
   /**
@@ -150,9 +138,17 @@ public class SortSearch{
   This algorithm works on any ArrayList.
   */
   public int linearSearch(int value){
+    // Default to -1 if not found.
+    int index = -1;
 
-
-    return 0; // replace this return
+    // Check the whole ArrayList, or stop after finding first
+    // match.
+    for(int i = 0; i < this.data.size() && index == -1; i++){
+      if(this.data.get(i) == value){
+        index = i;
+      }
+    }
+    return index; // replace this return
   }
     
   /**
@@ -160,15 +156,30 @@ public class SortSearch{
   This algorithm only works on sorted ArrayLists.
   */
   public int binarySearch(int value){
-
+    Scanner debug = new Scanner(System.in);
     // create assign variables representing the high,
-    // low and middle indices 
+    // low and middle indices
+    int loInd  = 0;
+    int hiInd  = this.data.size()-1;
+    int midInd = (loInd+hiInd)/2;
     // while we're not done:
-    //   if the item is at data.get(middle), return middle
-    //   otherwise, update high, low, and middle
-    
-    return 0;
-    
+    // if the item is at data.get(middle), return middle
+    while(this.data.get(midInd) != value && loInd < hiInd){
+      // System.out.println(midInd);
+      // debug.nextLine();
+      // otherwise, update high, low, and middle
+      if(this.data.get(midInd) < value){
+        //+1 due to truncated division.
+        loInd = midInd+1;
+      }else{
+        hiInd = midInd;
+      }
+      midInd = (loInd+hiInd)/2;
+    }
+    if(this.data.get(midInd) != value){
+      midInd = -1;
+    }
+    return midInd;
   }
     
   /**
@@ -181,20 +192,26 @@ public class SortSearch{
   public int binarySearchRecursive(int value, int lowIndex,
                                    int highIndex){
 
-    // refer to class discussion
-  
-    return 0;
-    
+    int midInd = (lowIndex+highIndex)/2;
+    if(this.data.get(midInd) == value){
+      return midInd;
+    }else if(lowIndex >= highIndex){
+      return -1;
+    }else{
+      return (this.data.get(midInd) < value) ?
+        binarySearchRecursive(value, midInd+1,highIndex) :
+        binarySearchRecursive(value,lowIndex,midInd);
+    }
   }
     
 	
   public String toString(){
-    return ""+data;
+    return ""+this.data;
   };
 
 
   public void builtinSort(){
-    Collections.sort(data);
+    Collections.sort(this.data);
 
   }
 }
