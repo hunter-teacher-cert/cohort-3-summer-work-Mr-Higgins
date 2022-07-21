@@ -33,12 +33,16 @@ public class SortSearch{
     
     private Random r; 
 
+    public int step;
+
+    public Scanner debug = new Scanner(System.in);
+
 
   // Constructor #1: Default
   public SortSearch(){
     // creates new ArrayList of integers  
     data = new ArrayList<Integer>();
-
+    step = 0;
     // generates a random number generator
     r = new Random();
 
@@ -53,7 +57,7 @@ public class SortSearch{
   public SortSearch(int size){
     // creates new ArrayList of integers  
     data = new ArrayList<Integer>();
-
+    step = 0;
     // generates a random number generator
     r = new Random();
 
@@ -188,11 +192,18 @@ public class SortSearch{
      
     This algorithm only works on sorted ArrayLists.
   */
-
+  
   public int binarySearchRecursive(int value, int lowIndex,
                                    int highIndex){
-
+    // System.out.println("Step "+this.step+":");
+    // System.out.println("------");
+    // System.out.println("lowIndex: "+lowIndex);
+    // System.out.println("highIndex: "+highIndex);
     int midInd = (lowIndex+highIndex)/2;
+    // System.out.println("midIndex: ("+lowIndex+"+"+highIndex+")/2="+midInd);
+    // debug.nextLine();
+    animate(value,lowIndex,highIndex,midInd);
+    step++;
     if(this.data.get(midInd) == value){
       return midInd;
     }else if(lowIndex >= highIndex){
@@ -213,5 +224,53 @@ public class SortSearch{
   public void builtinSort(){
     Collections.sort(this.data);
 
+  }
+
+  public String animateString(int loInd, int hiInd, int midInd){
+    final String ANSI_RESET = "\u001B[0m";
+    final String ANSI_BLACK = "\u001B[30m";
+    final String ANSI_RED = "\u001B[31m";
+    final String ANSI_GREEN = "\u001B[32m";
+    final String ANSI_YELLOW = "\u001B[33m";
+    final String ANSI_BLUE = "\u001B[34m";
+    final String ANSI_PURPLE = "\u001B[35m";
+    final String ANSI_CYAN = "\u001B[36m";
+    final String ANSI_WHITE = "\u001B[37m";
+    String myString = "[";
+    for(int i = 0; i < this.data.size()-1; i++){
+      if(i == loInd){
+        myString+=(ANSI_YELLOW+"{"+this.get(i)+", ");
+      }else if(i == midInd){
+        myString+=(ANSI_CYAN+"|"+this.get(i)+"|, "+ANSI_YELLOW);
+      }
+      else if(i == hiInd){
+        myString+=(this.get(i)+"}, "+ANSI_RESET);
+      }else{
+        myString+=(this.get(i)+", ");
+      }
+    }
+    if(hiInd == this.data.size()-1){
+      myString+=(this.get(this.data.size()-1)+"}"+ANSI_RESET);
+    }else{
+      myString+=(this.get(this.data.size()-1));
+    }
+    myString+="]";
+    return myString;
+  }
+
+  public static void delay(int n)
+  {
+    try {
+      Thread.sleep(n);
+    }
+    catch(InterruptedException e) {}
+  }
+  
+  public void animate(int value, int loInd, int hiInd, int midInd){
+    System.out.print("[0;0H\n");
+    System.out.println("Step: "+step);
+    System.out.println("Search value: "+value);
+    System.out.println(animateString(loInd,hiInd,midInd));
+    delay(2000);
   }
 }
