@@ -48,7 +48,7 @@ public class SortSearch{
 
     // create 15 random numbers from 0 - 19
     for (int i = 0; i < 15; i++){
-        data.add(r.nextInt(20));
+        data.add(r.nextInt(10000));
     }
 
   }
@@ -63,7 +63,7 @@ public class SortSearch{
 
     //create 'size' random numbers from 0 - 19
     for (int i = 0; i < size; i++){
-        data.add(r.nextInt(20));
+        data.add(r.nextInt(10000));
     }
 
   }
@@ -121,7 +121,6 @@ public class SortSearch{
     
     // Loop a variable that represents the ArrayList index
     // from 0 to the end of the ArrayList.
-    int smallest;
     
     for(int i = 0; i < this.data.size(); i++){
       Collections.swap(this.data,i,findSmallestIndex(i)); 
@@ -202,8 +201,8 @@ public class SortSearch{
     int midInd = (lowIndex+highIndex)/2;
     // System.out.println("midIndex: ("+lowIndex+"+"+highIndex+")/2="+midInd);
     // debug.nextLine();
-    animate(value,lowIndex,highIndex,midInd);
-    step++;
+    // animate(value,lowIndex,highIndex,midInd);
+    // step++;
     if(this.data.get(midInd) == value){
       return midInd;
     }else if(lowIndex >= highIndex){
@@ -227,6 +226,7 @@ public class SortSearch{
   }
 
   public String animateString(int loInd, int hiInd, int midInd){
+    //colorize!
     final String ANSI_RESET = "\u001B[0m";
     final String ANSI_BLACK = "\u001B[30m";
     final String ANSI_RED = "\u001B[31m";
@@ -236,6 +236,7 @@ public class SortSearch{
     final String ANSI_PURPLE = "\u001B[35m";
     final String ANSI_CYAN = "\u001B[36m";
     final String ANSI_WHITE = "\u001B[37m";
+    
     String myString = "[";
     for(int i = 0; i < this.data.size()-1; i++){
       if(i == loInd){
@@ -246,6 +247,7 @@ public class SortSearch{
       else if(i == hiInd){
         myString+=(this.get(i)+"}, "+ANSI_RESET);
       }else{
+        //check if we are at the last item here
         myString+=(this.get(i)+", ");
       }
     }
