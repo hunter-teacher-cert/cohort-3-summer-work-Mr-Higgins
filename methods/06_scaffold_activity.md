@@ -19,7 +19,7 @@ _Take it further_ - there are some hints toward the bottom to aid you with doing
 * Change the background of the stage to a color of your choice.
 * Add scoring to your game. Every time the paddles bounces off the ball, the player should earn a point and every time  the ball hits the right wall, the player should lose a point. You can create a variable to keep track of the score.
 
-# Potentially Given Scripts
+# Given Code
 
 ## Ball Code
 ![Given Ball Code](/methods/anticipatedballcode.png)
