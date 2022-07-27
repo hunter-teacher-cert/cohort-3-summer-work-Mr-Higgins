@@ -335,4 +335,31 @@ public class SortSearch{
     
     return myList; // replace this line
   }
+
+  public ArrayList<Integer> mergeSort(ArrayList<Integer> list){
+
+    // check for base case
+    if(list.size() < 2){
+      return list;
+    }
+    // if not the base case
+    // split in two lists
+    ArrayList<Integer> loList = new ArrayList<Integer>
+                                (list.subList(0,list.size()/2));
+    ArrayList<Integer> hiList = new ArrayList<Integer>
+                                (list.subList(list.size()/2,
+                                             list.size()));
+    // meregSort the left half
+    loList = mergeSort(loList);
+    // mergeSort the right half
+    hiList = mergeSort(hiList);
+    // merge them together into a new list
+    ArrayList<Integer> myList = merge(loList,hiList);
+    // return that new list 
+    return myList;
+  }
+
+  public void msort(){
+    data = mergeSort(data);
+  }
 }

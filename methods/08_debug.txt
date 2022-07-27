@@ -1,0 +1,92 @@
+Introduction
+------------
+
+This will be implemented in the topic of arrays (see programming/2/ArrayPractice).
+
+Debugging Compiler Errors
+-------------------------
+
+Errors that occur before an executable is produced is extremely common, students should be aware 
+
+Example (modified) code to illustrate this issue:
+=================================================
+  public static void printArray(int[] data)
+  {
+    System.out.print('{')
+    for(int i = 0; i < data.length-1; i++){
+      System.out.print(data[i]+", ");
+    }
+    System.out.println(data[data.length-1]+"}");
+  }
+=================================================
+
+Key Points to Emphasize:
+* Most compiler errors are superfluous, because the compiler is off-track
+  after the first error.
+* Focus on the information in the first error and then recompile before
+  trying the others.
+
+Things to Avoid:
+* Avoid adding or deleting spurious code, if it isn't relevant to the
+  error provided.
+* Don't wait until your code is too long.
+---
+
+Debugging Run-Time Errors
+-------------------------
+
+These errors tend to come from correct syntax, but inappropriate access.
+Such as trying to enter the 10th value in a 3-element sized array, or trying to print something that has never been instantiated with a value.
+
+Example (modified) code to illustrate this issue:
+=================================================
+  public static int firstOccurrence(int[] data, int value)
+  {
+    int index = -1;
+    for(int i = 0; i <= data.length; i++){
+      if(data[i] == value){
+        index = i;
+      }
+    }
+    return index;
+  }
+=================================================
+
+Key Points to Emphasize:
+* Check all conditionals, especially in for or while loops.
+* Be wary of the Off by One Error.
+
+Things to Avoid:
+* Comment what you know works and what it does.
+* Do not write off any conditional without justification.
+---
+
+Debugging Logic Errors
+----------------------
+
+Another situation that really arises in conditionals, but this time without
+causing the computer to scream profanities at us!
+
+Example (modified) code to illustrate this issue:
+=================================================
+  public static int arraySum( int[] data )
+  {
+    int total = 0;
+    for(int i = 0; i<data.length; i++){
+      total += data[i];
+    }
+    return total;
+  }
+=================================================
+
+Key Points to Emphasize:
+* These are the hardest to fix problems. Do not feel defeated if you can't
+  find them all in one go!
+* Drawing out state diagrams with preconditions and postconditions can help
+  flush out where the problem is hiding.
+
+Things to Avoid:
+* Do not delete problematic code, comment it out in case you were wrong in
+  accusing it of being guilty!
+
+---
