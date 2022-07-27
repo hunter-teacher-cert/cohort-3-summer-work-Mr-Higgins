@@ -1,0 +1,57 @@
+Note: This is designed to be an activity attractive to both high level AP CSP students as well as senior math students coming in without a strong math background.
+
+Assumptions: It is assumed students who get up to this activity have been
+shown at least one searching algorithm and have an understanding of
+procedural operation.
+
+Reggie the Robot's Sorted Storage Activity
+==========================================
+
+Reggie the Robot is a recurring character in class, and this time a new
+problem comes up.
+
+All of Reggie's storage is always sorted alphabetically, closets included.
+This makes it incredibly hard for Reggie to find what's needed for the
+daily weather.
+
+Students (groups of 4) are required to do the following:
+1) Come up with 3 objects needed/worn in each weather type.
+* Weather Types:
+* * Sunny
+* * Rainy
+* * Snowy/Hailing
+* * Sandstorm
+
+# Teacher's Note: Suggest students take one weather and come up with 3
+# objects.
+# If you cannot only keep groups of 4, make some groups of 3 and suggest
+# that they each suggest one object for each weather.
+
+2) Establish roles (role-based groupwork):
+* Sorter - Sorts the initial list of objects, and will document the "code"
+  necessary to reach Reggie's goals.
+* Searcher - Illustrates the run-time actions of the "code" necessary to
+  reach Reggie's goals.
+* Programmer - Formulates the "code" necessary to reach Reggie's goals.
+* Debugger - Helps all others secure their roles, can also tag in or out
+  of roles with others if necessary.
+
+# Teacher's Note: I recommend the Debugger role for the highest performing
+# student, that way other students can engage in that productive struggle,
+# while being monitored by those more secure in the topic.
+
+3) Determine how many "steps" it takes for Reggie to get ready for each
+weather condition, using whichever search algorithm preferred.
+
+# Teacher's Note: You can gauge student progress by prospection. Feel free
+# to ask them what algorithm they're trying and see if their efforts align
+# with what they say.
+# If students are not engaging with the task because it is considered
+# beneath their skill, add challenges such as "find an arrangement that is
+# most efficient if the weather is most often sunny", or make two weathers
+# depend on one object and ask them to run new tests on those "what-ifs".
+
+========
+Activity Goals: Through groupwork the students will recognize the steps of
+algorithmic searching and compare and contrast searching for
+humans vs. searching for machines.
