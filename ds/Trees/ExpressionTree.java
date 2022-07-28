@@ -71,8 +71,12 @@ public class ExpressionTree{
     return a-b;
    }else if(op == '*'){
     return a*b;
-   }else{ //  if(op == '/'){ //or any invalid operators
+   }else if(op == '/'){ //  if(op == '/'){ //or any invalid operators
     return a/b;
+   }else if(op == '^'){
+     return Math.pow(a,b);
+   }else{
+     return Math.pow(b,1/a);
    }
 
   }
